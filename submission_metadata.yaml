@@ -1,0 +1,76 @@
+# Redrob Hackathon — Submission Metadata
+# Mirrors the portal metadata. Fill in the placeholders marked TODO before upload.
+
+team_name: "TODO-your-team-name"
+
+primary_contact:
+  name: "Aryan Trivedi"
+  email: "aryan.trivedi.official@gmail.com"
+  phone: "+91-9140535424" 
+
+team_members:
+  - name: "Aryan Trivedi"
+    email: "aryan.trivedi@naviconinfra.com"
+    role: "Team Lead / ML Engineer"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/PearlGrell/redrob-ranker"
+
+sandbox_link: "https://huggingface.co/spaces/PearlGrell/redrob-ranker" 
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "Local Windows 11 box"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.13"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude only for architecture design and documentation. All scoring logic is
+  explicit, human-written Python — no LLM is called during ranking, and no candidate
+  data was sent to any hosted LLM service at ranking time.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  Explainable hybrid ranker, no network, CPU-only, ~80s for 100K candidates.
+
+  Relevance is an additive weighted sum of six JD-aligned features read from
+  STRUCTURED evidence rather than the skills array: role identity (title/headline),
+  career evidence of retrieval/ranking/recsys/search at scale, product-vs-services
+  ratio, 5-9yr seniority band, India/Pune-Noida location, and an IR-depth bonus
+  (retrieval + vector infra + eval literacy). The JD's explicit disqualifiers
+  (keyword-stuffing in a non-AI role, consulting-only careers, research-without-
+  production, LangChain-only hype, title-churn) are subtractive penalties. A
+  multiplicative behavioral modifier (recruiter response rate, recency, open-to-work,
+  notice period, interview reliability) captures availability. Honeypots are detected
+  via internal profile contradictions (impossible tenures, expert-skill-zero-duration)
+  and forced to score 0. Reasoning strings are generated only from real profile facts.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true

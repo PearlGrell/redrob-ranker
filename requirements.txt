@@ -1,0 +1,2 @@
+# Standard library only — no dependencies needed to produce the submission CSV.
+# pytest>=7.0  # optional, for running the test suite

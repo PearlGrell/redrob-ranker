@@ -1,0 +1,3 @@
+# Extra dependency only for the hosted sandbox demo (app.py).
+# The ranker itself (rank.py) needs none of this.
+streamlit>=1.30
