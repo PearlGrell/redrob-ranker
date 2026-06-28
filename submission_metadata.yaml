@@ -1,7 +1,7 @@
 # Redrob Hackathon — Submission Metadata
-# Mirrors the portal metadata. Fill in the placeholders marked TODO before upload.
+# Mirrors the portal metadata.
 
-team_name: "TODO-your-team-name"
+team_name: "IO.println"
 
 primary_contact:
   name: "Aryan Trivedi"
